@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,25 +9,23 @@
     <link rel="canonical" href="https://bytesizebible.com/">
 
     <!-- Favicon -->
-    <link rel="icon" href="<?= BASE_URL ?>/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
-
 <body>
-
 <header class="hero">
     <div class="hero-video">
         <video autoplay muted loop playsinline>
-            <source src="<?= BASE_URL ?>/assets/videos/hero-motion.mp4" type="video/mp4">
+            <source src="/assets/videos/hero-motion.mp4" type="video/mp4">
         </video>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="hero-left">
-            <img src="<?= BASE_URL ?>/assets/images/ByteSizeBible-logo.png" alt="ByteSizeBible Logo" class="hero-image">
+            <img src="/assets/images/ByteSizeBible-logo.png" alt="ByteSizeBible Logo" class="hero-image">
         </div>
         <div class="hero-right">
             <h1>ByteSizeBible</h1>
@@ -36,4 +33,3 @@
         </div>
     </div>
 </header>
-

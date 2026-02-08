@@ -1,9 +1,7 @@
 <?php
-require_once __DIR__ . '/config/bootstrap.php';
-
 $page_title = 'Blog - ByteSizeBible';
-include BASE_PATH . '/partials/header.php';
-include BASE_PATH . '/partials/navigation.php';
+include __DIR__ . '/partials/header.php';
+include __DIR__ . '/partials/navigation.php';
 
 $postsDir = __DIR__ . '/posts/';
 $posts = glob($postsDir . '*.php') ?: [];
@@ -125,4 +123,4 @@ usort($items, fn($a, $b) => ($b['date'] ?? 0) <=> ($a['date'] ?? 0));
   </div>
 </main>
 
-<?php include BASE_PATH . '/partials/footer.php'; ?>
+<?php include __DIR__ . '/partials/footer.php'; ?>

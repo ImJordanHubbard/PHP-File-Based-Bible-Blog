@@ -3,8 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once __DIR__ . '/config/bootstrap.php';
-
 // Get category and slug from URL (via .htaccess rewrite)
 $category = $_GET['category'] ?? '';
 $slug = $_GET['slug'] ?? '';
@@ -60,8 +58,8 @@ $date = $post['date'] ?? strtotime('1970-01-01');
 
 // Include header/navigation
 $page_title = $title . " - ByteSizeBible";
-include BASE_PATH . '/partials/header.php';
-include BASE_PATH . '/partials/navigation.php';
+include __DIR__ . '/partials/header.php';
+include __DIR__ . '/partials/navigation.php';
 ?>
 
 <main>
@@ -88,4 +86,4 @@ include BASE_PATH . '/partials/navigation.php';
     </article>
 </main>
 
-<?php include BASE_PATH . '/partials/footer.php'; ?>
+<?php include __DIR__ . '/partials/footer.php'; ?>
