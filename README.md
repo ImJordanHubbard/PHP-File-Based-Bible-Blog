@@ -1,72 +1,99 @@
-# PHP File-Based Bible Blog
+# PHP File-Based Blog
 
-This repository contains my first PHP project, created to extend my existing HTML and CSS knowledge by introducing server-side rendering with PHP.
+This repository contains a small PHP project that turns a static site into a simple blog for Bible study articles.
 
-The project converts a static site into a simple dynamic blog that displays Bible study articles stored as individual PHP files.
+The aim of the project is to understand how PHP can be used to reduce repetition, load content dynamically, and reuse shared layout, without using a database, framework, or CMS.
 
-## Project Purpose
+---
 
-The primary goal of this project was to understand how PHP can be used to:
+## What This Project Is
 
-- Reduce repetition in static HTML
-- Introduce shared layouts and reusable components (Navigation, Header, Footer)
-- Dynamically load content
-- Add basic logic to an otherwise static site
+The site is a file-based blog.
 
-Rather than building a complex application, the focus was on learning how PHP enhances static websites.
+Each article is stored as its own PHP file. PHP is used to:
+- List available articles
+- Load the correct article when a link is clicked
+- Reuse the same header, navigation, and footer across pages
 
-## How It Works
+Everything is kept explicit so it is easy to see what is happening and why.
 
-- Study articles are stored as PHP files in an internal posts directory
-- The homepage lists available studies
-- Clicking a post dynamically loads its content
-- Common layout elements are reused across pages
+---
 
-No database, CMS, or framework is used.
-
-## Concepts Practised
-
-- PHP includes and execution flow
-- Turning static HTML into reusable templates
-- Basic routing with query parameters
-- Separating content from layout
-- Maintaining clean, readable markup
-- Styling with plain CSS
-
-## Folder Structure
+## Where Things Live
 
 - `/posts`  
-  Individual Bible study articles as PHP files
+  Contains all Bible study articles.  
+  Each file returns a set of details (title, date, category, etc.) and the article content as HTML.
 
-- `index.php`  
-  Homepage listing available studies
+- `/partials`  
+  Contains shared layout files such as the header, navigation, and footer.  
+  These are included where needed to avoid repeating the same markup.
 
-- `post.php`  
-  Single post renderer
+- `/assets`  
+  Contains CSS, JavaScript, images, and video.  
+  These files are served directly by the web server.
 
-- `bootstrap.php`  
-  Shared configuration and helper logic
+---
 
-- `style.css`  
-  Site styling
+## How Pages Work
 
-- `script.js`  
-  Minimal client-side behaviour
+### Homepage (`index.php`)
 
-- `sitemap.xml` and `robots.txt`  
-  Basic SEO support
+The homepage lists all available articles.
 
-## Design Choices
+It:
+- Looks through the `/posts` folder
+- Loads each article file
+- Creates a short excerpt from the content
+- Sorts articles by date
+- Displays them as clickable cards
 
-This project intentionally avoids a database to keep the focus on:
+Simple JavaScript is used on this page to filter articles by category and book without reloading the page.
 
-- Core PHP mechanics
-- File-based content management
-- Simplicity and transparency
-- Easy editing and version control of content
+---
 
-Each post remains human-readable and self-contained.
+### Article Page (`post.php`)
 
-## Learning Outcome
+Each article is viewed through a single PHP file.
 
-This project marks my first step beyond static HTML and CSS. It demonstrates how PHP can introduce structure, reuse, and dynamism to a site while remaining simple, understandable, and purpose-driven.
+When a URL like:
+
+/gospels/genealogy-of-jesus-new-beginnings
+
+is requested, the server passes the category and slug to `post.php`.
+
+That file:
+- Finds the matching article file
+- Redirects to a consistent lowercase URL if needed
+- Shows a 404 page if no article exists
+- Outputs the article content and details
+
+---
+
+## URLs
+
+Clean, readable URLs are handled using a small Apache rewrite rule.
+
+Real files (such as images, CSS, and JavaScript) are not affected and load normally.
+
+---
+
+## Why This Approach
+
+This project avoids a database and framework on purpose.
+
+The goal is to:
+- Learn how PHP works in a real site
+- Keep content easy to edit and version-control
+- Understand how requests, files, and includes fit together
+- Avoid unnecessary complexity while learning
+
+Each part of the site exists to solve a clear, practical problem and nothing more.
+
+---
+
+## Summary
+
+This project shows how PHP can add structure and flexibility to a small site while remaining simple, readable, and easy to maintain.
+
+It is designed to be understood first, not scaled prematurely.
